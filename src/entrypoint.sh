@@ -2,8 +2,8 @@
 
 set -e
 
-if [ -z $ROTATE_BACKUPS_CONFIG ]; then
-  ROTATE_BACKUPS_CONFIG="--daily=7 --weekly=4 --monthly=12 --yearly=always --dry-run"
+if [ -z $ROTATION_SCHEME ]; then
+  ROTATION_SCHEME="--daily=7 --weekly=4 --monthly=12 --yearly=always --dry-run"
 fi
 
-/usr/local/bin/rotate-backups $ROTATE_BACKUPS_CONFIG /archive
+/usr/local/bin/rotate-backups $ROTATION_SCHEME /archive
