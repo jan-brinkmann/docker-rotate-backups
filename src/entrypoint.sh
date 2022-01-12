@@ -2,6 +2,10 @@
 
 set -e
 
+if [ -f "/config/rotate-backups.ini" ]; then
+   ROTATION_SCHEME="-c /config/rotate-backups.ini"
+fi
+
 HOURLY="${HOURLY:-0}"
 DAILY="${DAILY:-7}"
 WEEKLY="${WEEKLY:-4}"
