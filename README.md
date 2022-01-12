@@ -29,7 +29,7 @@ It is also possible to overhand a scheme within a configuration file `rotate-bac
 ```
 docker run --rm \
 -v /path/to/backups:/archive \
--v /path/to/config-file/rotate-backups.ini:/config/rotate-backups.ini \
+-v /path/to/rotate-backups.ini:/config/rotate-backups.ini \
 ghcr.io/jan-brinkmann/docker-rotate-backups
 ```
 In order to find out how to create such a file, we again refer to the [documentation](https://pypi.org/project/rotate-backups/#configuration-files).

@@ -2,7 +2,7 @@
 
 set -e
 
-if [ -f "rotate-backups.ini" ]; then
+if [ -f "/config/rotate-backups.ini" ]; then
    ROTATION_SCHEME="-c /config/rotate-backups.ini"
 fi
 
