@@ -26,8 +26,8 @@ For more information on the syntax and the options, we refer to the [official `r
 
 ### Separate Variables
 The scheme can also be customized by a number of environmental variables representing various time spans:
-Variable | Default Value | Notes
---- | --- | ---
+Variable | Default Value | Possible Values | Notes
+--- | --- | --- | ---
 `HOURLY` | `0` | `0`-`9`, `always` | Number of hourly backups to preserve.
 `DAILY` | `7` | `0`-`9`, `always` | Number of daily backups to preserve.
 `WEEKLY` | `4` | `0`-`9`, `always` | Number of weekly backups to preserve.
