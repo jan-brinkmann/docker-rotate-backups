@@ -3,7 +3,7 @@
 set -e
 
 if [ -f "rotate-backups.ini" ]; then
-   ROTATION_SCHEME="-c rotate-backups.ini"
+   ROTATION_SCHEME="-c /config/rotate-backups.ini"
 fi
 
 HOURLY="${HOURLY:-0}"
