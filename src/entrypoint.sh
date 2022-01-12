@@ -11,7 +11,7 @@ DRY_RUN="${DRY_RUN:-true}"
 
 if [ -z $ROTATION_SCHEME ]; then
   ROTATION_SCHEME="--hourly=$HOURLY --daily=$DAILY --weekly=$WEEKLY --monthly=$MONTHLY --yearly=$YEARLY"
-  if [ $DRY_RUN == true ]; then
+  if [ $DRY_RUN != false ]; then
     ROTATION_SCHEME="$ROTATION_SCHEME --dry-run"
   fi
 fi
