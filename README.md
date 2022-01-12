@@ -28,12 +28,12 @@ For more information on the syntax and the options, we refer to the [official `r
 The scheme can also be customized by a number of environmental variables representing various time spans:
 Variable | Default Value | Notes
 --- | --- | ---
-`HOURLY` | `0` | `0-9, always` | Number of hourly backups to preserve.
-`DAILY` | `7` | `0-9, always` | Number of daily backups to preserve.
-`WEEKLY` | `4` | `0-9, always` | Number of weekly backups to preserve.
-`MONTHLY` | `12` | `0-9, always` | Number of monthly backups to preserve.
-`YEARLY` | `always` | `0-9, always` | Number of yearly backups to preserve.
-`DRY_RUN` | `true` | `true, false` | The dry-run option must explicitly be deactivated by means of `DRY_RUN=false` in order to remove backups.
+`HOURLY` | `0` | `0`-`9`, `always` | Number of hourly backups to preserve.
+`DAILY` | `7` | `0`-`9`, `always` | Number of daily backups to preserve.
+`WEEKLY` | `4` | `0`-`9`, `always` | Number of weekly backups to preserve.
+`MONTHLY` | `12` | `0`-`9`, `always` | Number of monthly backups to preserve.
+`YEARLY` | `always` | `0`-`9`, `always` | Number of yearly backups to preserve.
+`DRY_RUN` | `true` | `true`, `false` | The dry-run option must explicitly be deactivated by means of `DRY_RUN=false` in order to remove backups.
 
 Feel free to customize the variables you like to adapt only. In the following example, `DAILY`, `WEEKLY`, `MONTHLY`, and `DRY_RUN` are set to the respective values. `HOURLY` and `YEARLY` remain on the default values `0` and `always`, respectively. The resulting scheme is `--hourly=0 --daily=3 --weekly=1 --monthly=1 --yearly=always`.
 ```
