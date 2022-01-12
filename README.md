@@ -14,7 +14,7 @@ The default scheme to preserve and to remove backups is `--hourly=0 --daily=7 --
 
 ## How to customize
 
-You may overhand a complete schema at once by means of `ROTATION_SCHEME`:
+You may overhand a complete scheme at once by means of `ROTATION_SCHEME`:
 ```
 docker run --rm \
 -e ROTATION_SCHEME="--daily=7 --weekly=4 --monthly=6" \
@@ -23,7 +23,7 @@ ghcr.io/jan-brinkmann/docker-rotate-backups
 ```
 For more information on the syntax and the options, we refer to the [official `rotate-backups` documentation](https://pypi.org/project/rotate-backups/#command-line).
 
-The scheme can also be cutomized by a number of environmental variables representing various time spans:
+The scheme can also be customized by a number of environmental variables representing various time spans:
 Variable | Default Value | Notes
 --- | --- | ---
 `HOURLY` | `0` | ---
