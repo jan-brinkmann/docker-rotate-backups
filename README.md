@@ -26,12 +26,12 @@ For more information on the syntax and the options, we refer to the [official `r
 The scheme can also be cutomized by a number of environmental variables representing various time spans:
 Variable | Default Value | Notes
 --- | --- | ---
-HOURLY | 0 | ---
-DAILY | 7 | ---
-WEEKLY | 4 | ---
-MONTHLY | 12 | ---
-YEARLY | always | ---
-DRY_RUN | true | ---
+`HOURLY` | `0` | ---
+`DAILY` | `7` | ---
+`WEEKLY` | `4` | ---
+`MONTHLY` | `12` | ---
+`YEARLY` | `always` | ---
+`DRY_RUN` | `true` | ---
 
 Feel free to customize the variables you like to adapt only. In the following example, `DAILY`, `WEEKLY`, `MONTHLY`, and `DRY_RUN` are set to the respective values. `HOURLY` and `YEARLY` remain on the default values`0` and `always`, respectively. The resulting scheme is `--hourly=0 --daily=3 --weekly=1 --monthly=1 --yearly=always`.
 ```
