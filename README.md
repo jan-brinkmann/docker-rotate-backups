@@ -10,10 +10,20 @@ docker run --rm \
 -v /path/to/backups:/archive \
 ghcr.io/jan-brinkmann/docker-rotate-backups
 ```
-The default scheme to preserve and to remove backups is `--hourly=0 --daily=7 --weekly=4 --monthly=12 --yearly=always --dry-run`.
+The default scheme to preserve and to remove backups is `--hourly=0 --daily=7 --weekly=4 --monthly=12 --yearly=always --dry-run`. Due to the `--dry-run` flag, no backups will be removed. But you are allowed to customize the scheme.
 
 ## How to customize
-The scheme can be customized by the environmental variables `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`, `YEARLY`, and `DRY_RUN`. Feel free to customize the variables you like to adapt only. In the following example, `DAILY`, `WEEKLY`, `MONTHLY`, and `DRY_RUN` are set to the respective values. `HOURLY` and `YEARLY` remain on `0` and `always`, respectively. The resulting scheme is `--hourly=0 --daily=3 --weekly=1 --monthly=1 --yearly=always`.
+
+You may overhand a complete schema at once by means of `ROTATION_SCHEME`:
+```
+docker run --rm \
+-e ROTATION_SCHEME="--daily=7 --weekly=4 --monthly=6" \
+-v /path/to/backups:/archive \
+ghcr.io/jan-brinkmann/docker-rotate-backups
+```
+For more information on the syntax and the options, we refer to the [official `rotate-backups` documentation](https://pypi.org/project/rotate-backups/#command-line).
+
+The scheme can also be customized by the environmental variables `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`, `YEARLY`, and `DRY_RUN`. Feel free to customize the variables you like to adapt only. In the following example, `DAILY`, `WEEKLY`, `MONTHLY`, and `DRY_RUN` are set to the respective values. `HOURLY` and `YEARLY` remain on `0` and `always`, respectively. The resulting scheme is `--hourly=0 --daily=3 --weekly=1 --monthly=1 --yearly=always`.
 ```
 docker run --rm \
 -e DAILY=3 \
@@ -23,11 +33,3 @@ docker run --rm \
 -v /path/to/backups:/archive \
 ghcr.io/jan-brinkmann/docker-rotate-backups
 ```
-Otherwise, you are enabled to overhand a complete schema at once by means of `ROTATION_SCHEME`:
-```
-docker run --rm \
--e ROTATION_SCHEME="--daily=7 --weekly=4 --monthly=6" \
--v /path/to/backups:/archive \
-ghcr.io/jan-brinkmann/docker-rotate-backups
-```
-For more information on the syntax and the options, we refer to the [official `rotate-backups` documentation](https://pypi.org/project/rotate-backups/#command-line).
