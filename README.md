@@ -24,6 +24,16 @@ ghcr.io/jan-brinkmann/docker-rotate-backups
 ```
 For more information on the syntax and the options, we refer to the [official `rotate-backups` documentation](https://pypi.org/project/rotate-backups/#command-line).
 
+### Configuration File
+It is also possible to overhand a scheme within a configuration file `rotate-backups.ini`:
+```
+docker run --rm \
+-v /path/to/backups:/archive \
+-v /path/to/config-file/rotate-backups.ini:/config/rotate-backups.ini \
+ghcr.io/jan-brinkmann/docker-rotate-backups
+```
+In order to find out how to create such a file, we again refer to the [documentation](https://pypi.org/project/rotate-backups/#configuration-files).
+
 ### Separate Variables
 The scheme can also be customized by a number of environmental variables representing various time spans:
 Variable | Default Value | Possible Values | Notes
