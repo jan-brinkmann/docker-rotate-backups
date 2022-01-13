@@ -14,7 +14,10 @@ YEARLY="${YEARLY:-always}"
 DRY_RUN="${DRY_RUN:-true}"
 
 if [ -z $ROTATION_SCHEME ]; then
-  ROTATION_SCHEME="--hourly=$HOURLY --daily=$DAILY --weekly=$WEEKLY --monthly=$MONTHLY --yearly=$YEARLY"
+  ROTATION_SCHEME="--daily=$DAILY --weekly=$WEEKLY --monthly=$MONTHLY --yearly=$YEARLY"
+  if [$HOURLY != 0]; then
+    ROTATION_SCHEME="--hourly=$HOURLY $ROTATION_SCHEME"
+  fi
   if [ $DRY_RUN != false ]; then
     ROTATION_SCHEME="$ROTATION_SCHEME --dry-run"
   fi
