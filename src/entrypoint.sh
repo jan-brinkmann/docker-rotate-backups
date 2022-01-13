@@ -13,6 +13,7 @@ MONTHLY="${MONTHLY:-12}"
 YEARLY="${YEARLY:-always}"
 DRY_RUN="${DRY_RUN:-true}"
 
+# Set up rotation scheme
 if [ -z $ROTATION_SCHEME ]; then
   ROTATION_SCHEME="--daily=$DAILY --weekly=$WEEKLY --monthly=$MONTHLY --yearly=$YEARLY"
   if [$HOURLY != 0]; then
@@ -23,7 +24,17 @@ if [ -z $ROTATION_SCHEME ]; then
   fi
 fi
 
-echo -e "\n\033[1m[INFO] rotate-backups \033[0m \n"
-echo "ROTATION_SCHEME: $ROTATION_SCHEME"
+# Set up archive directory
+if [ -f /root/.ssh/id_rsa ]; then
+  ARCHIVE="$SSH_USER@$SSH_HOST:$SSH_ARCHIVE"
+elif [ -d /archive ]; then
+  ARCHIVE="/archive"
+else
+  echo "No archive directory found."
+  exit 1
+fi
 
-/usr/local/bin/rotate-backups $ROTATION_SCHEME /archive
+echo -e "\n\033[1m[INFO] rotate-backups \033[0m \n"
+echo "rotate-backups $ROTATION_SCHEME $ARCHIVE"
+
+/usr/local/bin/rotate-backups $ROTATION_SCHEME $ARCHIVE

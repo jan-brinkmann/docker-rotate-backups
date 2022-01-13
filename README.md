@@ -4,15 +4,29 @@ This repository provides a Docker image that implements [`rotate-backups`](https
 By using this image, you are enabled to instantiate a container that runs `rotate-backups` once on a mounted directory. In the mounted directory, irrelevant backups are removed and useful are preserved. Afterwards, the container is stopped and, if desired, removed.
 
 ## How to use
-Simply adapt the directory to mount and run the following command on your Docker host:
+We support running `rotate-backups` on both local and remote directories.
+
+### Local Directories
+Simply adapt the directory to mount at `/archive` and run the following command on your Docker host:
 ```
 docker run --rm \
 -v /path/to/backups:/archive \
 ghcr.io/jan-brinkmann/docker-rotate-backups
 ```
-The default scheme to preserve and to remove backups is `--hourly=0 --daily=7 --weekly=4 --monthly=12 --yearly=always --dry-run`. Due to the `--dry-run` flag, no backups will be removed. But you are allowed to customize the scheme.
+
+### Remote Directories
+To run `rotate-backups` on a remote directory, adapt the variables `SSH_USER`, `SSH_HOST`, and `SSH_ARCHIVE`. You also need to mount your public SSH key to the named directory. Make sure, that you already have [exchanged keys with the remote host](https://foofunc.com/how-to-create-and-add-ssh-key-in-remote-ssh-server/).
+```
+docker run --rm \
+-e SSH_USER=pi \
+-e SSH_HOST=192.168.0.42 \
+-e SSH_ARCHIVE=/path/to/backups \
+-v ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
+ghcr.io/jan-brinkmann/docker-rotate-backups
+```
 
 ## How to customize
+The default scheme to preserve and to remove backups is `--hourly=0 --daily=7 --weekly=4 --monthly=12 --yearly=always --dry-run`. Due to the `--dry-run` flag, no backups will be removed. But you are allowed to customize the scheme.
 
 ### Scheme at once
 You may overhand a complete scheme at once by means of `ROTATION_SCHEME`:
