@@ -28,8 +28,8 @@ if [ -z $ROTATION_SCHEME ]; then
   fi
 fi
 
-# Set up archive directory
-if [ -f /root/.ssh/id_rsa ]; then
+# Set up archive
+if [ -f /root/.ssh/id_rsa ] && [ ! -z $SSH_USER ] && [ ! -z $SSH_HOST ] && [ ! -z $SSH_ARCHIVE ]; then
   ARCHIVE="$SSH_USER@$SSH_HOST:$SSH_ARCHIVE"
 elif [ -d /archive ]; then
   ARCHIVE="/archive"
